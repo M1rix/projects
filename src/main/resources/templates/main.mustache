@@ -5,32 +5,71 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
     <title>Main</title>
 </head>
-<body>
-<div>
-    <form action="/logout" method="post">
+<body class="yellow lighten-5">
+<div class="container" style="border-radius: 15%;">
+    <h3 class="col s12 center-align">Adding user to dbase</h3></div>
+<div class="container">
+<div >
+    <form  class="col s12 right-align"action="/logout" method="post">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-        <input type="submit" value="Sign Out">
+        <input class=" waves-effect waves-light btn"  type="submit" value="Sign Out">
     </form>
 </div>
 <div>
     <form method="post">
-        <input type="text" name="username" placeholder="Username"/>
-        <input type="password" name="password" placeholder="Password"/>
+        <div class="col segment4"><input type="text" name="username" placeholder="Username"/></div>
+        <div class="col segment4"><input type="password" name="password" placeholder="Password"/></div>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-        <button type="submit">Sign Up</button>
+        <div class="center-align"><button class=" waves-effect waves-light btn" type="submit">Add</button></div>
     </form>
 </div>
+</div>
+<div class="container">
+    <h4 class="col s12 center-align"> Список пользователей</h4>
 
-<div>Список пользователей</div>
-{{#users}}
-    <div>
-    <b>{{id}}</b>
-    <span>{{username}}</span>
-    <i>{{password}}</i>
+
+</div>
+
+    <div class="container center-align">
+        <table class="striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>UserName</th>
+                <th>Password</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {{#users}}
+            <tr>
+                <td><b>{{id}}</b></td>
+                <td>{{username}}</td>
+                <td>{{password}}</td>
+                <td>
+                    <form action="/main" method="post">
+                    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                    <button type="submit"><i class="material-icons">delete</i></button>
+                    </form>
+                </td>
+            </tr>
+            {{/users}}
+            </tbody>
+
+
+        </table>
     </div>
-{{/users}}
+
 
 </body>
 </html>

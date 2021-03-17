@@ -5,17 +5,25 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <title>Security</title>
 </head>
-<body>
+<body class="yellow lighten-5">
+<div class="container" style="border-radius: 15%;">
+    <h1 class="col s12 center-align">Add new User</h1>
+</div>
 <div class="container">
-    Add new User
     {{#users}}
         {{user}}
     {{/users}}
 <form action="/registration" method="post">
-    <div><label> User Name: <input type="text" name="username" placeholder="Username"/> </label></div>
-    <div><label> Password <input type="password" name="password" placeholder="Password"/> </label></div>
+    <div><label> User Name: <input type="text" name="username" /> </label></div>
+    <div><label> Password <input type="password" name="password" /> </label></div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
     <div><input type="submit" value="Sing In"/></div>
 </form>

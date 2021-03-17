@@ -38,7 +38,12 @@ public class MainController {
         Iterable<Account> users = accountRepository.findAll();
 
         model.put("users", users);
-
         return "main";
     }
+    @GetMapping("/error")
+    public String error(Map<String,Object> model) {
+                return "error";
+    }
+
+
 }
